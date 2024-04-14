@@ -14,6 +14,7 @@ public class Enemy_FOV : MonoBehaviour
     public bool player_Visible;
 
     public GameObject player_Ref;
+    public Vector3 last_Player_Location;
     public LayerMask target_Mask;
     public LayerMask obstacle_Mask;
 
@@ -56,8 +57,10 @@ public class Enemy_FOV : MonoBehaviour
                 if (!Physics.Raycast(transform.position, direction_To_Target, distance_To_Target, obstacle_Mask))
                 {
                     player_Visible = true;
-                    // Surprise animation + sound effect here 
-                    enemy_Movement_Script.Move_To_Player();
+                    // For use in Enemy_Movement Chase_Player
+                    last_Player_Location = player_Ref.transform.position;
+                    // Change state in Enemy_Movement to Chase_Player
+                    enemy_Movement_Script.Change_State(2);
                 }
                 else
                     player_Visible = false;
