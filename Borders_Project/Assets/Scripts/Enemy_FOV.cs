@@ -17,6 +17,7 @@ public class Enemy_FOV : MonoBehaviour
     public LayerMask target_Mask;
     public LayerMask obstacle_Mask;
 
+    public Enemy_Movement enemy_Movement_Script;
     void Start()
     {
         player_Ref = GameObject.FindGameObjectWithTag("Player");
@@ -53,7 +54,11 @@ public class Enemy_FOV : MonoBehaviour
                 
                 // Checks if target is actually visible to enemy
                 if (!Physics.Raycast(transform.position, direction_To_Target, distance_To_Target, obstacle_Mask))
+                {
                     player_Visible = true;
+                    // Surprise animation + sound effect here 
+                    enemy_Movement_Script.Move_To_Player();
+                }
                 else
                     player_Visible = false;
             }
