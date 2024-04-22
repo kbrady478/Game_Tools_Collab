@@ -47,12 +47,12 @@ public class ItemCollecting : MonoBehaviour
 
     void FreezeObjects()
     {
-        player.gameObject.GetComponent<PlayerMovement>().enabled = false;
+       // player.gameObject.GetComponent<PlayerMovement>().enabled = false;
     }
 
     void UnfreezeObjects()
     {
-        player.gameObject.GetComponent<PlayerMovement>().enabled = true;
+       // player.gameObject.GetComponent<PlayerMovement>().enabled = true;
         Lockerui.SetActive(false);
 
     }
