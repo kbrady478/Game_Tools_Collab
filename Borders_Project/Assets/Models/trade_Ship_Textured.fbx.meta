@@ -17,8 +17,8 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Long Planks.001
-    second: {fileID: 2100000, guid: 3549adc8053d27f48b6f004358bad70b, type: 2}
+      name: Material.002
+    second: {fileID: 2100000, guid: f225ec8965224494081e3fc05354323b, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
@@ -39,6 +39,116 @@ ModelImporter:
       assembly: UnityEngine.CoreModule
       name: Wood Planks
     second: {fileID: 2100000, guid: bd6c32e69e7ff9147b74db315a2998e3, type: 2}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_baseColor_1k
+    second: {fileID: 2800000, guid: d1e23f2a1df0bb54d9d33c433f2745e7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_metallic_1k
+    second: {fileID: 2800000, guid: c7a3f9e01d069d449bcba947ce4d8aee, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_normal_gl_1k
+    second: {fileID: 2800000, guid: 61ea2ad134d47054cb130c4005fc57bd, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: floor_tiles_02_roughness_1k
+    second: {fileID: 2800000, guid: 2f1194e14d5e8c34fa655279b35b7194, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal_plates_01_color_1k
+    second: {fileID: 2800000, guid: 0a7beca206c8ec243a5190a0f613ee59, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal_plates_01_metallic_1k
+    second: {fileID: 2800000, guid: 09fbb465340107549b843fc109dc81b1, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal_plates_01_normal_gl_1k
+    second: {fileID: 2800000, guid: e9817c32e52af3a4d96080df5c40fc15, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: metal_plates_01_roughness_1k
+    second: {fileID: 2800000, guid: cb7f6640fdf60854fab802a84aec99d4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_02_color_1k
+    second: {fileID: 2800000, guid: bde412a84b366ed4db40e77a7c0a5403, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_02_normal_gl_1k
+    second: {fileID: 2800000, guid: 2c05224b5ee7de0429b2e4efab25d478, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_02_roughness_1k
+    second: {fileID: 2800000, guid: c4883ec2eb0c517499fcb3b89c18bf1d, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_01_normal_gl_1k
+    second: {fileID: 2800000, guid: 8412ade6b4314cc43a59e82886fbf1a3, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_01_roughness_1k
+    second: {fileID: 2800000, guid: 7d1d9b4d8b2bd6441b4f2e5579639261, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_07_color_1k
+    second: {fileID: 2800000, guid: cb80d15eacf59d84da26c69cfcdb09ff, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_07_normal_gl_1k
+    second: {fileID: 2800000, guid: e1e8272dd38edd94baf1ee616401cfb7, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_07_roughness_1k
+    second: {fileID: 2800000, guid: a4a603cad04af8b42a72c19a3c767c4e, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_08_color_1k
+    second: {fileID: 2800000, guid: cb572c894109def4980288cc0c6522e4, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_08_normal_gl_1k
+    second: {fileID: 2800000, guid: f3dc027725a7de94f9be9c6955f2cede, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_08_roughness_1k
+    second: {fileID: 2800000, guid: 68a01c6dc2deaf04b930e4570080edfc, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_12_color_1k
+    second: {fileID: 2800000, guid: 988f71f3da765664689cf6322b04b57f, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_12_normal_gl_1k
+    second: {fileID: 2800000, guid: 2cbd2636e81b7b544ac7f72ce17e75b5, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: wood_planks_12_roughness_1k
+    second: {fileID: 2800000, guid: ff0113a79f2db0b4c8bf9f36e71562c9, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
