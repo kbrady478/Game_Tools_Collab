@@ -180,7 +180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_Animator: {fileID: 1715305557532369577}
-  patrol_Points: []
+  patrol_Points:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   enemy_FOV_Script: {fileID: 5389413440497212789}
   patrol_Speed: 2
   chase_Speed: 7
@@ -286,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6f93900bbf8b7438e23274030b0c2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  FOV_Radius: 7.37
+  FOV_Radius: 10
   FOV_Angle: 80
   searching_FOV_Angle: 130
   temp_Searching_FOV_Angle: 0
