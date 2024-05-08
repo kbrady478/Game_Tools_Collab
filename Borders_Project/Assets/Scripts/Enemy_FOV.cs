@@ -13,6 +13,8 @@ public class Enemy_FOV : MonoBehaviour
     
     [Range(0, 360)]
     public float searching_FOV_Angle;
+
+    public float temp_Searching_FOV_Angle;
     
     public bool player_Visible;
 
@@ -25,6 +27,7 @@ public class Enemy_FOV : MonoBehaviour
     void Start()
     {
         player_Ref = GameObject.FindGameObjectWithTag("Player");
+        temp_Searching_FOV_Angle = FOV_Angle;
         StartCoroutine(FOV_Routine());
     } // end Start
 
@@ -45,7 +48,7 @@ public class Enemy_FOV : MonoBehaviour
         // Searches for objects only on target_Mask (the player)
         Collider[] range_Checks = Physics.OverlapSphere(transform.position, FOV_Radius, target_Mask);
 
-    
+        // If player is found
         if (range_Checks.Length != 0)
         {
             Transform target = range_Checks[0].transform;
