@@ -13,9 +13,13 @@ using UnityEngine.AI;
 using Quaternion = UnityEngine.Quaternion;
 using Random = UnityEngine.Random;
 using Vector3 = UnityEngine.Vector3;
+using UnityEngine.SceneManagement;
 
 public class Enemy_Movement : MonoBehaviour
 {
+    public int current_Level; // Needed for scene transitions 
+    private MonoBehaviour Scene_Transition;
+    
     private NavMeshAgent enemy_Nav_Agent; 
     private GameObject player_Object;
     private GameObject search_Point = null;
@@ -226,7 +230,7 @@ public class Enemy_Movement : MonoBehaviour
     
     private void Death_Sequence()
     {
-        print("player died");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }// end Attack_State
     
     
