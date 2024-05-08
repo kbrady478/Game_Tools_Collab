@@ -295,7 +295,8 @@ MonoBehaviour:
   searching_FOV_Angle: 130
   temp_Searching_FOV_Angle: 0
   player_Visible: 0
-  player_Ref: {fileID: 0}
+  player_Ref: {fileID: 4459864850019384750, guid: 6bacecc4f3df9584198879c73a6b6c36,
+    type: 3}
   last_Player_Location: {x: 0, y: 0, z: 0}
   target_Mask:
     serializedVersion: 2
