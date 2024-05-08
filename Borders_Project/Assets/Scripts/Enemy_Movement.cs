@@ -16,31 +16,16 @@ using Vector3 = UnityEngine.Vector3;
 
 public class Enemy_Movement : MonoBehaviour
 {
-    private NavMeshAgent enemy_Nav_Agent;
-
-    public Animator enemy_Animator;
-    // For if I reuse and don't hardcode
-    //public String[] enemy_Animator_Bool;
-
-    public float patrol_Speed;
-    public float chase_Speed;
-    
-    // Patrolling set area
-    public int target_Point; // Next patrol point to walk to
-    
-    public Transform[] patrol_Points; // Array of patrol waypoints, added in editor
-    
-    // Searching for Player
-    private bool search_Point_Placed;
-    
-    public float min_Search_Distance;
-    
+    private NavMeshAgent enemy_Nav_Agent; 
     private GameObject player_Object;
     private GameObject search_Point = null;
     
-    public GameObject search_Point_Prefab;
+    public Animator enemy_Animator;
+    // For if I reuse and don't hardcode
+    //public String[] enemy_Animator_Bool;
+    
+    public Transform[] patrol_Points; // Array of patrol waypoints, added in editor
     public Enemy_FOV enemy_FOV_Script;
-
     
     private enum State
     {
@@ -49,18 +34,30 @@ public class Enemy_Movement : MonoBehaviour
         // Hunt player when in sight + go to last known location
         Chase_Player,
         // When player first goes out of sight, enemy will do a short search
-        Search_For_Player
-        // 
-        
+        Search_For_Player,
+        // When enemy reaches player
+        Attack_Player,
+        // Standing between walking to patrol points
+        Patrol_Idle
     }
+    
     private State current_State = State.Patrol;
     private int previous_State = 1;
-
-    // TEMP WANDER VARS **************
+    private bool search_Point_Placed;
+    
+    public float patrol_Speed;
+    public float chase_Speed;
+    
+    // Patrolling set area
+    private int target_Point; // Next patrol point to walk to
+    public float patrol_Idle_Time; // Time spent at patrol point before moving
+    private float patrol_Timer; 
+    
+    // Search State vars
     public float wander_Duration;
-    public int wander_Amount; // How many time the enemy will wander before going back to patrol
+    public int wander_Amount; // How many times the enemy will wander before going back to patrol
     private int wander_Inc = 0; // Increment for wander_Amount;
-    public float timer;
+    private float search_Timer;
     
     
     private void Start()
@@ -86,6 +83,7 @@ public class Enemy_Movement : MonoBehaviour
                     enemy_FOV_Script.FOV_Angle = enemy_FOV_Script.temp_Searching_FOV_Angle;
                     enemy_Animator.SetBool("Searching State", false);
                     enemy_Animator.SetBool("Chasing State", false);
+                    enemy_Animator.SetBool("Idle State", false);
                     enemy_Animator.SetBool("Walking State", true);
                 }
                 Patrol_State();
@@ -98,6 +96,7 @@ public class Enemy_Movement : MonoBehaviour
                     enemy_FOV_Script.FOV_Angle = enemy_FOV_Script.searching_FOV_Angle;
                     enemy_Animator.SetBool("Walking State", false);
                     enemy_Animator.SetBool("Searching State", false);
+                    enemy_Animator.SetBool("Idle State", false);
                     enemy_Animator.SetBool("Chasing State", true);
                 }
                 Chase_Player_State();
@@ -107,12 +106,32 @@ public class Enemy_Movement : MonoBehaviour
                 if (enemy_Animator.GetBool("Searching State") == false)
                 {
                     enemy_Animator.SetBool("Chasing State", false);
+                    enemy_Animator.SetBool("Idle State", false);
                     enemy_Animator.SetBool("Searching State", true);
-                }
-                //Search_For_Player_State();
-                timer += Time.deltaTime;
+                } 
+                
                 Search_State();
                 break;
+            
+            case State.Attack_Player:
+                enemy_Animator.SetBool("Walking State", false);
+                enemy_Animator.SetBool("Chasing State", false);
+                enemy_Animator.SetBool("Searching State", false);
+                enemy_Animator.SetBool("Idle State", false);
+                enemy_Animator.SetBool("Attack State", true);
+
+                Death_Sequence();
+                break;
+            
+            case State.Patrol_Idle:
+                enemy_Animator.SetBool("Walking State",false);
+                enemy_Animator.SetBool("Chasing State",false);
+                enemy_Animator.SetBool("Searching State",false);
+                enemy_Animator.SetBool("Idle State",true);
+                
+                Idle_State();
+                break;
+            
         }// end State switch
     }// end Update
 
@@ -128,16 +147,28 @@ public class Enemy_Movement : MonoBehaviour
         float distance_To_Waypoint = Vector3.Distance(patrol_Points[target_Point].position, transform.position);
 
         // Checks if close enough to target waypoint, then changes to next
-        if (distance_To_Waypoint <= 3)
+        if (distance_To_Waypoint <= .7)
         {
-            // put timer here **************
-            target_Point = (target_Point + 1) % patrol_Points.Length;
+            Change_State(5);
         }
         
         enemy_Nav_Agent.SetDestination(patrol_Points[target_Point].position);
 
     }// end Patrol_State
 
+    
+    private void Idle_State()
+    {
+        if (patrol_Timer >= patrol_Idle_Time)
+        {
+            patrol_Timer = 0;
+            target_Point = (target_Point + 1) % patrol_Points.Length;
+            Change_State(1);
+        }
+        else
+            patrol_Timer += Time.deltaTime;
+    }// end Idle_State
+    
     
     private void Chase_Player_State()
     {
@@ -173,12 +204,14 @@ public class Enemy_Movement : MonoBehaviour
     
     private void Search_State()
     {
-        if (timer >= wander_Duration && wander_Inc < wander_Amount)
+        search_Timer += Time.deltaTime;
+        
+        if (search_Timer >= wander_Duration && wander_Inc < wander_Amount)
         {
             Debug.Log("new wander");
             Vector3 random_Point = Random.insideUnitCircle * enemy_FOV_Script.FOV_Radius;
             enemy_Nav_Agent.SetDestination(random_Point);
-            timer = 0;
+            search_Timer = 0;
             wander_Inc++;
         }
         else if (wander_Inc >= wander_Amount)
@@ -189,6 +222,12 @@ public class Enemy_Movement : MonoBehaviour
         }
         
     }// end Search_State
+    
+    
+    private void Death_Sequence()
+    {
+        print("player died");
+    }// end Attack_State
     
     
     // 1 is Patrol, 2 is Chase, 3 is Search
@@ -212,6 +251,12 @@ public class Enemy_Movement : MonoBehaviour
         if (new_State == 3)
             current_State = State.Search_For_Player;
 
+        if (new_State == 4)
+            current_State = State.Attack_Player;
+
+        if (new_State == 5)
+            current_State = State.Patrol_Idle;
+        
         previous_State = new_State;
     }// end Change_States
 
@@ -221,7 +266,7 @@ public class Enemy_Movement : MonoBehaviour
         if (other.gameObject.CompareTag("Player"))
         {
             Debug.Log("player caught");
-            // trigger death sequence
+            Change_State(4);
         }
     }
 }// end Enemy_Movement
