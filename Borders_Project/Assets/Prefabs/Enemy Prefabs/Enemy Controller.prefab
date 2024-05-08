@@ -180,15 +180,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_Animator: {fileID: 1715305557532369577}
-  patrol_Points:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  patrol_Points: []
   enemy_FOV_Script: {fileID: 5389413440497212789}
   patrol_Speed: 2
   chase_Speed: 7
-  patrol_Idle_Time: 0
+  patrol_Idle_Time: 3
   wander_Duration: 3
   wander_Amount: 3
 --- !u!136 &1659453323294203488
