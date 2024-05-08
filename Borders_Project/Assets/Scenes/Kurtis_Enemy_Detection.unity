@@ -754,21 +754,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy_Animator: {fileID: 528835211}
-  patrol_Speed: 2
-  chase_Speed: 7
-  target_Point: 0
   patrol_Points:
   - {fileID: 1276127965}
   - {fileID: 1090515925}
   - {fileID: 1273292818}
   - {fileID: 1160250168}
-  min_Search_Distance: 2
-  search_Point_Prefab: {fileID: 5454845499206401761, guid: 6c318400898845048b048996dd475fed,
-    type: 3}
   enemy_FOV_Script: {fileID: 1502239313}
+  patrol_Speed: 2
+  chase_Speed: 7
+  patrol_Idle_Time: 4
   wander_Duration: 3
   wander_Amount: 3
-  timer: 3
 --- !u!195 &468398377
 NavMeshAgent:
   m_ObjectHideFlags: 0
