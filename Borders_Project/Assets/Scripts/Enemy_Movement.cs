@@ -226,9 +226,6 @@ public class Enemy_Movement : MonoBehaviour
     
     private void Death_Sequence()
     {
-        // trigger attack anim
-        // wait to finish anim
-        // respawn sequence
         print("player died");
     }// end Attack_State
     
