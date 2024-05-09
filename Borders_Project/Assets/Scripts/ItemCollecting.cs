@@ -9,7 +9,7 @@ public class ItemCollecting : MonoBehaviour
     public UnityEvent enteredTrigger, exitedTrigger, stayInTrigger;
     private bool isInsideTrigger;
     public GameObject ui, Lockerui, player;
-    public TextMeshProUGUI uitext, foodtext, watertext, mainchallengetext;
+    public TextMeshProUGUI foodtext, watertext, mainchallengetext;
     public int bananaCount, waterCount = 0;
     public bool Key, Locker, Passport = false;
 
@@ -116,13 +116,11 @@ public class ItemCollecting : MonoBehaviour
          {
             ui.SetActive(true);
             isInsideTrigger = true;
-            uitext.text = "Pick up Bananas";
          }
          if (other.CompareTag("Water"))
          {
             ui.SetActive(true);
             isInsideTrigger = true;
-            uitext.text = "Pick up Water";
          }
     }
 
@@ -136,7 +134,6 @@ public class ItemCollecting : MonoBehaviour
           {
             ui.SetActive(true);
             isInsideTrigger = true;
-            uitext.text = "Pick up Water";
           }
     }
 
