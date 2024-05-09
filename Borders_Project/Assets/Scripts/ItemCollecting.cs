@@ -8,7 +8,7 @@ public class ItemCollecting : MonoBehaviour
 {
     public UnityEvent enteredTrigger, exitedTrigger, stayInTrigger;
     private bool isInsideTrigger;
-    public GameObject ui, Lockerui, player;
+    public GameObject ui, Lockerui, player, objectInTrigger;
     public TextMeshProUGUI foodtext, watertext, mainchallengetext;
     public int bananaCount, waterCount = 0;
     public bool Key, Locker, Passport = false;
@@ -29,13 +29,10 @@ public class ItemCollecting : MonoBehaviour
 
     }
     void Update()
+
     {
-        // Check for input to collect bananas
-        if (Input.GetMouseButtonDown(0))
-        {
-            CollectItem();
-            
-        }
+        
+
         if (Locker ==true)
         {
             UnfreezeObjects();
@@ -64,82 +61,80 @@ public class ItemCollecting : MonoBehaviour
 
     void CollectItem()
     {
-        // Cast a ray from the center of the screen
-        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
-        RaycastHit hit;
+        Debug.Log("collect item");
 
-        // Check if the ray hits a banana
-        if (Physics.Raycast(ray, out hit))
+        // Check if the hit object is a banana
+        if (objectInTrigger.CompareTag("Banana"))
         {
-            GameObject hitObject = hit.collider.gameObject;
-
-
-            // Check if the hit object is a banana
-            if (hitObject.CompareTag("Banana"))
-            {
-                
-                Destroy(hitObject);
-                bananaCount++;
-                foodtext.text = bananaCount + "/6";
-                ui.SetActive(false);
-            }
-            if (hitObject.CompareTag("Water"))
-            {
-                // Destroy the banana
-                Destroy(hitObject);
-                waterCount++;
-                watertext.text = waterCount + "/3";
-                ui.SetActive(false);
-            }
-            if (hitObject.CompareTag("Key"))
-            {
-                Destroy(hitObject);
-                mainchallengetext.text = "Find Locker";
-                Key = true;
-            }
-            if (hitObject.CompareTag("Locker") && Key == true)
-            {
-                OpenLocker();
-                mainchallengetext.text = "Get Passport";
-            }
-            if (hitObject.CompareTag("Passport") && Locker == true)
-            {
-                Destroy(hitObject);
-                mainchallengetext.text = "Find Place to rest";
-                Passport = true;
-            }
+            Debug.Log("Obj in trigger");
+            Destroy(objectInTrigger);
+            bananaCount++;
+            foodtext.text = bananaCount + "/6";
+            ui.SetActive(false);
+        }
+        else if (objectInTrigger.CompareTag("Water"))
+        {
+            Debug.Log("Water");
+            Destroy(objectInTrigger);
+            waterCount++;
+            watertext.text = waterCount + "/3";
+            ui.SetActive(false);
+        }
+        else if (objectInTrigger.CompareTag("Key"))
+        {
+            Destroy(objectInTrigger);
+            mainchallengetext.text = "Find Locker";
+            Key = true;
         }
     }
     void OnTriggerEnter(Collider other)
     {
-         if (other.CompareTag("Banana"))
-         {
+        if (other.CompareTag("Banana") || other.CompareTag("Water"))
+        {
+            Debug.Log("See Banana");
             ui.SetActive(true);
             isInsideTrigger = true;
-         }
-         if (other.CompareTag("Water"))
-         {
-            ui.SetActive(true);
-            isInsideTrigger = true;
-         }
+            objectInTrigger = other.gameObject;
+            Debug.Log(objectInTrigger);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Mouse Shity");
+                CollectItem();
+
+
+
+            }
+
+        }
+        
     }
 
     void OnTriggerStay(Collider other)
     {
-          if (other.CompareTag("Banana"))
-          {
-           stayInTrigger.Invoke();
-          }
-          if (other.CompareTag("Water"))
-          {
+        if (other.CompareTag("Banana") || other.CompareTag("Water"))
+        {
             ui.SetActive(true);
             isInsideTrigger = true;
-          }
+            objectInTrigger = other.gameObject;
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Mouse Shity");
+                CollectItem();
+
+
+
+            }
+
+
+        }
     }
 
     void OnTriggerExit(Collider other)
     {
-         ui.SetActive(false);
+
+            ui.SetActive(false);
+            isInsideTrigger = false;
+
 
     }
 }
