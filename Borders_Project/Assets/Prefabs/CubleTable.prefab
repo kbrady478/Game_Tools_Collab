@@ -78,6 +78,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: CubleTable
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 51b21f7e273ca5a44b481520a280f300,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

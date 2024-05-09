@@ -8,6 +8,8 @@ TagManager:
   - Banana
   - Water
   - Key
+  - Locker
+  - Passport
   layers:
   - Default
   - TransparentFX
