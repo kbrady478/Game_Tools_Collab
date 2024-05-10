@@ -18,7 +18,7 @@ using UnityEngine.SceneManagement;
 public class Enemy_Movement : MonoBehaviour
 {
     public int current_Level; // Needed for scene transitions 
-    private MonoBehaviour Scene_Transition;
+    public Scene_Transition scene_Transition_Script;
     
     private NavMeshAgent enemy_Nav_Agent; 
     private GameObject player_Object;
@@ -123,8 +123,7 @@ public class Enemy_Movement : MonoBehaviour
                 enemy_Animator.SetBool("Searching State", false);
                 enemy_Animator.SetBool("Idle State", false);
                 enemy_Animator.SetBool("Attack State", true);
-
-                Death_Sequence();
+                
                 break;
             
             case State.Patrol_Idle:
@@ -228,10 +227,17 @@ public class Enemy_Movement : MonoBehaviour
     }// end Search_State
     
     
-    private void Death_Sequence()
+    // Attack player
+    private void OnTriggerEnter(Collider other)
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }// end Attack_State
+        if (other.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("player caught");
+            Change_State(4);
+            scene_Transition_Script.death_Sequence = true;
+        }
+    }
+
     
     
     // 1 is Patrol, 2 is Chase, 3 is Search
@@ -265,14 +271,7 @@ public class Enemy_Movement : MonoBehaviour
     }// end Change_States
 
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
-        {
-            Debug.Log("player caught");
-            Change_State(4);
-        }
-    }
+
 }// end Enemy_Movement
 
 
