@@ -33,7 +33,9 @@ public class Scene_Transition : MonoBehaviour
             screen_Transparancy.a -= fade_Speed * Time.deltaTime;
             black_Screen.color = screen_Transparancy;
         }
-        
+
+        yield return null;
+
     }
     
     
