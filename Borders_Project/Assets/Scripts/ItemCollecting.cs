@@ -76,7 +76,7 @@ public class ItemCollecting : MonoBehaviour
             Debug.Log("Obj in trigger");
             Destroy(objectInTrigger);
             bananaCount++;
-            foodtext.text = bananaCount + "/6";
+            foodtext.text = bananaCount + "/4";
             ui.SetActive(false);
         }
         if (objectInTrigger.CompareTag("Water"))
@@ -89,10 +89,9 @@ public class ItemCollecting : MonoBehaviour
         }
         if (objectInTrigger.CompareTag("Medicine"))
         {
-            Debug.Log("Water");
             Destroy(objectInTrigger);
-            waterCount++;
-            watertext.text = waterCount + "/3";
+            MedCount++;
+            Medtext.text = MedCount + "/3";
             ui.SetActive(false);
         }
         if (objectInTrigger.CompareTag("Keys"))
