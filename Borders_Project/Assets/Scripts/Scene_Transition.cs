@@ -8,13 +8,15 @@ public class Scene_Transition : MonoBehaviour
 {
     private int scene_Number;
     
-    public GameObject black_Screen;
-    public int fade_Speed;
+    public Material black_Screen;
     public Color object_Colour;
+
+    [Range(0,1)]
+    public float fade_Speed;
 
     private void Start()
     {
-        object_Colour = black_Screen.GetComponent<Image>().tintColor;
+        
     }
 
     public void Start_Scene(int scene_Int)
@@ -23,22 +25,14 @@ public class Scene_Transition : MonoBehaviour
         StartCoroutine(Fade_From_Black());
     }
 
-    private IEnumerator Fade_From_Black(bool fade_Bool = true)
+    private IEnumerator Fade_From_Black()
     {
-        float fade_Amount;
-
-        if (fade_Bool)
+        Color screen_Transparancy = black_Screen.color;
+        while (screen_Transparancy.a > 0)
         {
-            while (black_Screen.GetComponent<Image>().tintColor.a < 1)
-            {
-                fade_Amount = object_Colour.a + (fade_Speed * Time.deltaTime);
-
-                object_Colour = new Color(object_Colour.r, object_Colour.g, object_Colour.b, fade_Amount);
-                black_Screen.GetComponent<Image>().tintColor = object_Colour;
-                yield return null;
-            }
+            screen_Transparancy.a -= fade_Speed * Time.deltaTime;
+            black_Screen.color = screen_Transparancy;
         }
-        else{}
         
     }
     
