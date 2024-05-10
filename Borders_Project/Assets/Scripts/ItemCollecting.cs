@@ -37,12 +37,12 @@ public class ItemCollecting : MonoBehaviour
             Debug.Log("mouse press");
             CollectItem();
         }
-        if (MedCount == 3 && waterCount > 2 && bananaCount >2)
+        if (MedCount == 1 && waterCount > 2 && bananaCount >2)
         {
             mainchallengetext.text = "Back to hideout";
             mainchallenge = true;
         }
-        if (Locker == true && waterCount < 2 && bananaCount < 2)
+        if (MedCount == 1 && waterCount < 2 && bananaCount < 2)
         {
             mainchallengetext.text = "Collect more supplies";
         }
@@ -91,7 +91,7 @@ public class ItemCollecting : MonoBehaviour
         {
             Destroy(objectInTrigger);
             MedCount++;
-            Medtext.text = MedCount + "/3";
+            Medtext.text = MedCount + "/1";
             ui.SetActive(false);
         }
 
