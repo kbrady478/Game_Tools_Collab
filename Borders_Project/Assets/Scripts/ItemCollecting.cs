@@ -18,9 +18,9 @@ public class ItemCollecting : MonoBehaviour
 
     void Start()
     {
-        foodtext.text = "0/4";
+        foodtext.text = "0/5";
         watertext.text = "0/3";
-        Medtext.text = "0/3";
+        Medtext.text = "0/1";
         mainchallengetext.text = "Collect Medicine";
     }
 
@@ -37,12 +37,12 @@ public class ItemCollecting : MonoBehaviour
             Debug.Log("mouse press");
             CollectItem();
         }
-        if (MedCount == 1 && waterCount > 2 && bananaCount >2)
+        if (MedCount == 1 && waterCount > 1 && bananaCount >2)
         {
             mainchallengetext.text = "Back to hideout";
             mainchallenge = true;
         }
-        if (MedCount == 1 && waterCount < 2 && bananaCount < 2)
+        if (MedCount == 1 && waterCount < 1 && bananaCount < 2)
         {
             mainchallengetext.text = "Collect more supplies";
         }
@@ -76,7 +76,7 @@ public class ItemCollecting : MonoBehaviour
             Debug.Log("Obj in trigger");
             Destroy(objectInTrigger);
             bananaCount++;
-            foodtext.text = bananaCount + "/4";
+            foodtext.text = bananaCount + "/5";
             ui.SetActive(false);
         }
         if (objectInTrigger.CompareTag("Water"))
