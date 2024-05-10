@@ -17,7 +17,7 @@ using UnityEngine.SceneManagement;
 
 public class Enemy_Movement : MonoBehaviour
 {
-    public int current_Level; // Needed for scene transitions 
+     
     public Scene_Transition scene_Transition_Script;
     
     private NavMeshAgent enemy_Nav_Agent; 
