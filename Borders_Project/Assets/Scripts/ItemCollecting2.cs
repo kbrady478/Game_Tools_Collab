@@ -114,6 +114,7 @@ public class ItemCollecting2 : MonoBehaviour
         {
             Debug.Log("Next scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
             //:(idk
         }
     }
