@@ -14,6 +14,7 @@ public class ItemCollecting2 : MonoBehaviour
     public TextMeshProUGUI foodtext, watertext, mainchallengetext;
     public int bananaCount, waterCount = 0;
     public bool Pant, Shirt, Passport, mainchallenge = false;
+    public AudioClip soundClip;
 
 
 
@@ -74,6 +75,7 @@ public class ItemCollecting2 : MonoBehaviour
         // Check if the hit object is a banana
         if (objectInTrigger.CompareTag("Banana"))
         {
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
             Debug.Log("Obj in trigger");
             Destroy(objectInTrigger);
             bananaCount++;
@@ -82,6 +84,7 @@ public class ItemCollecting2 : MonoBehaviour
         }
         if (objectInTrigger.CompareTag("Water"))
         {
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
             Debug.Log("Water");
             Destroy(objectInTrigger);
             waterCount++;
@@ -91,6 +94,7 @@ public class ItemCollecting2 : MonoBehaviour
         
         if (objectInTrigger.CompareTag("Shirt"))
         {
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
             Destroy(objectInTrigger);
             Shirt = true;
             shirtui.SetActive(true);
@@ -98,6 +102,7 @@ public class ItemCollecting2 : MonoBehaviour
         }
         if (objectInTrigger.CompareTag("Pant"))
         {
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
             Destroy(objectInTrigger);
             pantui.SetActive(true);
             Pant = true;
@@ -106,6 +111,7 @@ public class ItemCollecting2 : MonoBehaviour
         }
         if (objectInTrigger.CompareTag("Passport"))
         {
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
             passui.SetActive(true);
             Destroy(objectInTrigger);
             Passport = true;

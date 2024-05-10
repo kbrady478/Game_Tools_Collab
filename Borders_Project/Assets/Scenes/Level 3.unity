@@ -19985,6 +19985,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3518801491564256063, guid: 4ad4a82a1aaf578469ef6b98f2811468,
+        type: 3}
+      propertyPath: scene_Transition_Script
+      value: 
+      objectReference: {fileID: 3842124277206484985}
     - target: {fileID: 3704514121244858871, guid: 4ad4a82a1aaf578469ef6b98f2811468,
         type: 3}
       propertyPath: m_EndPoint.z
@@ -20025,6 +20030,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5634243891897119442, guid: 4ad4a82a1aaf578469ef6b98f2811468,
+        type: 3}
+      propertyPath: scene_Transition_Script
+      value: 
+      objectReference: {fileID: 3842124277206484985}
+    - target: {fileID: 5874567084735591702, guid: 4ad4a82a1aaf578469ef6b98f2811468,
+        type: 3}
+      propertyPath: scene_Transition_Script
+      value: 
+      objectReference: {fileID: 3842124277206484985}
+    - target: {fileID: 6723482881554411702, guid: 4ad4a82a1aaf578469ef6b98f2811468,
+        type: 3}
+      propertyPath: scene_Transition_Script
+      value: 
+      objectReference: {fileID: 3842124277206484985}
+    - target: {fileID: 6802597017218406603, guid: 4ad4a82a1aaf578469ef6b98f2811468,
+        type: 3}
+      propertyPath: scene_Transition_Script
+      value: 
+      objectReference: {fileID: 3842124277206484985}
     - target: {fileID: 7270228214157778688, guid: 4ad4a82a1aaf578469ef6b98f2811468,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -20045,6 +20070,11 @@ PrefabInstance:
       propertyPath: m_StartPoint.z
       value: 0.8
       objectReference: {fileID: 0}
+    - target: {fileID: 8910810993677474945, guid: 4ad4a82a1aaf578469ef6b98f2811468,
+        type: 3}
+      propertyPath: scene_Transition_Script
+      value: 
+      objectReference: {fileID: 3842124277206484985}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -21805,6 +21835,7 @@ MonoBehaviour:
   Shirt: 0
   Passport: 0
   mainchallenge: 0
+  soundClip: {fileID: 8300000, guid: cb87c824f167b1f4dbd6faedf8c491e3, type: 3}
 --- !u!1 &5536116840166490049
 GameObject:
   m_ObjectHideFlags: 0

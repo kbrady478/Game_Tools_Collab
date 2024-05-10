@@ -13,6 +13,7 @@ public class ItemCollecting1 : MonoBehaviour
     public TextMeshProUGUI foodtext, watertext, mainchallengetext;
     public int bananaCount, waterCount = 0;
     public bool Key, Locker, Passport, mainchallenge = false;
+    public AudioClip soundClip;
 
 
 
@@ -72,6 +73,7 @@ public class ItemCollecting1 : MonoBehaviour
         // Check if the hit object is a banana
         if (objectInTrigger.CompareTag("Banana"))
         {
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
             Debug.Log("Obj in trigger");
             Destroy(objectInTrigger);
             bananaCount++;
@@ -80,6 +82,7 @@ public class ItemCollecting1 : MonoBehaviour
         }
         if (objectInTrigger.CompareTag("Water"))
         {
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
             Debug.Log("Water");
             Destroy(objectInTrigger);
             waterCount++;
@@ -89,6 +92,7 @@ public class ItemCollecting1 : MonoBehaviour
         
         if (objectInTrigger.CompareTag("Key"))
         {
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
             Debug.Log("Collect key");
             Destroy(objectInTrigger);
             mainchallengetext.text = "Find Chest";
@@ -97,6 +101,7 @@ public class ItemCollecting1 : MonoBehaviour
         }
         if (objectInTrigger.CompareTag("Locker") && Key == true)
         {
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
             Destroy(objectInTrigger);
             Locker = true;
             //OpenLocker();

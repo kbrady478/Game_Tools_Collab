@@ -13,6 +13,7 @@ public class ItemCollecting : MonoBehaviour
     public TextMeshProUGUI foodtext, watertext, Medtext, mainchallengetext;
     public int bananaCount, waterCount, MedCount = 0;
     public bool Key, Locker, Passport, mainchallenge = false;
+    public AudioClip soundClip;
 
 
 
@@ -78,6 +79,7 @@ public class ItemCollecting : MonoBehaviour
             bananaCount++;
             foodtext.text = bananaCount + "/5";
             ui.SetActive(false);
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
         }
         if (objectInTrigger.CompareTag("Water"))
         {
@@ -86,6 +88,7 @@ public class ItemCollecting : MonoBehaviour
             waterCount++;
             watertext.text = waterCount + "/3";
             ui.SetActive(false);
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
         }
         if (objectInTrigger.CompareTag("Medicine"))
         {
@@ -93,13 +96,14 @@ public class ItemCollecting : MonoBehaviour
             MedCount++;
             Medtext.text = MedCount + "/1";
             ui.SetActive(false);
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
         }
 
         if (objectInTrigger.CompareTag("Bed") && mainchallenge == true)
         {
             Debug.Log("Next scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
-
+            AudioSource.PlayClipAtPoint(soundClip, Camera.main.transform.position);
         }
     }
     void OnTriggerEnter(Collider other)
