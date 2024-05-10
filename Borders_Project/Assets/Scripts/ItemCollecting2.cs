@@ -21,7 +21,8 @@ public class ItemCollecting2 : MonoBehaviour
     {
         foodtext.text = "0/9";
         watertext.text = "0/5";
-        mainchallengetext.text = "Look for items"; 
+        mainchallengetext.text = "Look for items";
+        mainchallenge = false;
     }
 
     
