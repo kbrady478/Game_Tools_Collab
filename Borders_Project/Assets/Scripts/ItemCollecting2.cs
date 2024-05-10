@@ -19,9 +19,9 @@ public class ItemCollecting2 : MonoBehaviour
 
     void Start()
     {
-        foodtext.text = "0/6";
-        watertext.text = "0/6";
-        mainchallengetext.text = ""; 
+        foodtext.text = "0/9";
+        watertext.text = "0/5";
+        mainchallengetext.text = "Look for items"; 
     }
 
     
@@ -37,12 +37,12 @@ public class ItemCollecting2 : MonoBehaviour
             Debug.Log("mouse press");
             CollectItem();
         }
-        if (Pant == true && Shirt == true && Passport == true && waterCount > 3 && bananaCount >3)
+        if (Pant == true && Shirt == true && Passport == true && waterCount > 4 && bananaCount >4)
         {
             mainchallengetext.text = "Back to hideout";
             mainchallenge = true;
         }
-        if (Pant == true && Shirt == true && Passport == true && waterCount < 3 && bananaCount < 3)
+        if (mainchallenge = true && waterCount < 4 && bananaCount < 4)
         {
             mainchallengetext.text = "Collect more supplies";
         }
@@ -76,7 +76,7 @@ public class ItemCollecting2 : MonoBehaviour
             Debug.Log("Obj in trigger");
             Destroy(objectInTrigger);
             bananaCount++;
-            foodtext.text = bananaCount + "/5";
+            foodtext.text = bananaCount + "/9";
             ui.SetActive(false);
         }
         if (objectInTrigger.CompareTag("Water"))
@@ -84,7 +84,7 @@ public class ItemCollecting2 : MonoBehaviour
             Debug.Log("Water");
             Destroy(objectInTrigger);
             waterCount++;
-            watertext.text = waterCount + "/4";
+            watertext.text = waterCount + "/5";
             ui.SetActive(false);
         }
         
@@ -126,6 +126,14 @@ public class ItemCollecting2 : MonoBehaviour
             isInsideTrigger = true;
             objectInTrigger = other.gameObject;
             Debug.Log(objectInTrigger);
+            if (Input.GetMouseButtonDown(0))
+            {
+                Debug.Log("Mouse Shity");
+                CollectItem();
+
+
+
+            }
 
         }
         
@@ -138,6 +146,7 @@ public class ItemCollecting2 : MonoBehaviour
             ui.SetActive(true);
             isInsideTrigger = true;
             objectInTrigger = other.gameObject;
+            Debug.Log(objectInTrigger);
             if (Input.GetMouseButtonDown(0))
             {
                 Debug.Log("Mouse Shity");
