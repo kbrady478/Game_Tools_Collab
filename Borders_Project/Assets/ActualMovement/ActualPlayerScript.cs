@@ -188,7 +188,7 @@ public class ActualMovement : MonoBehaviour
             sprintBarBG.gameObject.SetActive(false);
             sprintBar.gameObject.SetActive(false);
         }
-
+        cameraCanMove = true;
         #endregion
     }
 
