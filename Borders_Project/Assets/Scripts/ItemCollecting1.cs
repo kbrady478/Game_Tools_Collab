@@ -18,7 +18,7 @@ public class ItemCollecting1 : MonoBehaviour
 
     void Start()
     {
-        foodtext.text = "0/5";
+        foodtext.text = "0/7";
         watertext.text = "0/4";
         mainchallengetext.text = "Find Key"; 
     }
@@ -36,12 +36,12 @@ public class ItemCollecting1 : MonoBehaviour
             Debug.Log("mouse press");
             CollectItem();
         }
-        if (Locker == true && waterCount > 3 && bananaCount >3)
+        if (Locker == true && waterCount > 2 && bananaCount >3)
         {
             mainchallengetext.text = "Back to hideout";
             mainchallenge = true;
         }
-        if (Locker == true && waterCount < 3 && bananaCount < 3)
+        if (Locker == true && waterCount < 2 && bananaCount < 3)
         {
             mainchallengetext.text = "Collect more supplies";
         }
@@ -75,7 +75,7 @@ public class ItemCollecting1 : MonoBehaviour
             Debug.Log("Obj in trigger");
             Destroy(objectInTrigger);
             bananaCount++;
-            foodtext.text = bananaCount + "/5";
+            foodtext.text = bananaCount + "/7";
             ui.SetActive(false);
         }
         if (objectInTrigger.CompareTag("Water"))
@@ -87,7 +87,7 @@ public class ItemCollecting1 : MonoBehaviour
             ui.SetActive(false);
         }
         
-        if (objectInTrigger.CompareTag("Keys"))
+        if (objectInTrigger.CompareTag("Key"))
         {
             Debug.Log("Collect key");
             Destroy(objectInTrigger);
@@ -98,8 +98,6 @@ public class ItemCollecting1 : MonoBehaviour
         if (objectInTrigger.CompareTag("Locker") && Key == true)
         {
             Destroy(objectInTrigger);
-            mainchallengetext.text = "Found Chest";
-            LockerObj.SetActive(true);
             Locker = true;
             //OpenLocker();
             Debug.Log("LockerTrue");
@@ -113,7 +111,7 @@ public class ItemCollecting1 : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Keys") || other.CompareTag("Locker") || other.CompareTag("Bed"))
+        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Key") || other.CompareTag("Locker") || other.CompareTag("Bed"))
         {
             ui.SetActive(true);
             isInsideTrigger = true;
@@ -126,7 +124,7 @@ public class ItemCollecting1 : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Keys") || other.CompareTag("Locker") || other.CompareTag("Bed"))
+        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Key") || other.CompareTag("Locker") || other.CompareTag("Bed"))
         {
             ui.SetActive(true);
             isInsideTrigger = true;
