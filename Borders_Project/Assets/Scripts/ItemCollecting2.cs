@@ -21,7 +21,7 @@ public class ItemCollecting2 : MonoBehaviour
     {
         foodtext.text = "0/6";
         watertext.text = "0/6";
-        mainchallengetext.text = "Find:"; 
+        mainchallengetext.text = ""; 
     }
 
     
@@ -98,29 +98,29 @@ public class ItemCollecting2 : MonoBehaviour
         if (objectInTrigger.CompareTag("Pant"))
         {
             Destroy(objectInTrigger);
-            LockerObj.SetActive(true);
             pantui.SetActive(true);
             Pant = true;
-            //OpenLocker();
-            Debug.Log("LockerTrue");
+            ui.SetActive(false);
+
         }
         if (objectInTrigger.CompareTag("Passport"))
         {
             passui.SetActive(true);
             Destroy(objectInTrigger);
-            Shirt = true;
+            Passport = true;
             ui.SetActive(false);
         }
         if (objectInTrigger.CompareTag("Bed") && mainchallenge == true)
         {
             Debug.Log("Next scene");
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
             //:(idk
         }
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Keys") || other.CompareTag("Locker") || other.CompareTag("Bed"))
+        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Pant") || other.CompareTag("Shirt") || other.CompareTag("Passport") || other.CompareTag("Bed"))
         {
             ui.SetActive(true);
             isInsideTrigger = true;
@@ -133,7 +133,7 @@ public class ItemCollecting2 : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Keys") || other.CompareTag("Locker") || other.CompareTag("Bed"))
+        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Pant") || other.CompareTag("Shirt") || other.CompareTag("Passport") || other.CompareTag("Bed"))
         {
             ui.SetActive(true);
             isInsideTrigger = true;

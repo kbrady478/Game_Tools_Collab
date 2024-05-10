@@ -11,6 +11,10 @@ TagManager:
   - Keys
   - Bed
   - Medicine
+  - Key
+  - Shirt
+  - Pant
+  - Passport
   layers:
   - Default
   - TransparentFX
