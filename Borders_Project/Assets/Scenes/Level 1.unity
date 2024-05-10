@@ -405,7 +405,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: fcca98c6b1d121b41ae95f2c0687fbb4, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6630,8 +6630,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 674f8fa51412f374fb9dbe8e5ad18ccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemCollecting: {fileID: 0}
-  player: {fileID: 0}
 --- !u!4 &1375431549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3611410305586148371, guid: 02dd16f75e98f734795a3bbc9b229584,
