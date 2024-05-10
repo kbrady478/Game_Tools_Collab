@@ -7,9 +7,10 @@ TagManager:
   - Search Point
   - Banana
   - Water
-  - Key
   - Locker
-  - Passport
+  - Keys
+  - Bed
+  - Medicine
   layers:
   - Default
   - TransparentFX

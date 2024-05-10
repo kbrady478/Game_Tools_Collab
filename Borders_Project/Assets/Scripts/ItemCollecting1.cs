@@ -5,23 +5,22 @@ using UnityEngine.Events;
 using TMPro;
 using UnityEngine.SceneManagement;
 
-public class ItemCollecting : MonoBehaviour
+public class ItemCollecting1 : MonoBehaviour
 {
     public UnityEvent enteredTrigger, exitedTrigger, stayInTrigger;
     private bool isInsideTrigger;
     public GameObject ui, Lockerui, LockerObj, player, objectInTrigger;
-    public TextMeshProUGUI foodtext, watertext, Medtext, mainchallengetext;
-    public int bananaCount, waterCount, MedCount = 0;
+    public TextMeshProUGUI foodtext, watertext, mainchallengetext;
+    public int bananaCount, waterCount = 0;
     public bool Key, Locker, Passport, mainchallenge = false;
 
 
 
     void Start()
     {
-        foodtext.text = "0/4";
-        watertext.text = "0/3";
-        Medtext.text = "0/3";
-        mainchallengetext.text = "Collect Medicine";
+        foodtext.text = "0/5";
+        watertext.text = "0/4";
+        mainchallengetext.text = "Find Key"; 
     }
 
     
@@ -37,12 +36,12 @@ public class ItemCollecting : MonoBehaviour
             Debug.Log("mouse press");
             CollectItem();
         }
-        if (MedCount == 3 && waterCount > 2 && bananaCount >2)
+        if (Locker == true && waterCount > 3 && bananaCount >3)
         {
             mainchallengetext.text = "Back to hideout";
             mainchallenge = true;
         }
-        if (Locker == true && waterCount < 2 && bananaCount < 2)
+        if (Locker == true && waterCount < 3 && bananaCount < 3)
         {
             mainchallengetext.text = "Collect more supplies";
         }
@@ -76,7 +75,7 @@ public class ItemCollecting : MonoBehaviour
             Debug.Log("Obj in trigger");
             Destroy(objectInTrigger);
             bananaCount++;
-            foodtext.text = bananaCount + "/6";
+            foodtext.text = bananaCount + "/5";
             ui.SetActive(false);
         }
         if (objectInTrigger.CompareTag("Water"))
@@ -84,17 +83,10 @@ public class ItemCollecting : MonoBehaviour
             Debug.Log("Water");
             Destroy(objectInTrigger);
             waterCount++;
-            watertext.text = waterCount + "/3";
+            watertext.text = waterCount + "/4";
             ui.SetActive(false);
         }
-        if (objectInTrigger.CompareTag("Medicine"))
-        {
-            Debug.Log("Water");
-            Destroy(objectInTrigger);
-            waterCount++;
-            watertext.text = waterCount + "/3";
-            ui.SetActive(false);
-        }
+        
         if (objectInTrigger.CompareTag("Keys"))
         {
             Debug.Log("Collect key");
@@ -121,7 +113,7 @@ public class ItemCollecting : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Keys") || other.CompareTag("Locker") || other.CompareTag("Bed") || other.CompareTag("Medicine"))
+        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Keys") || other.CompareTag("Locker") || other.CompareTag("Bed"))
         {
             ui.SetActive(true);
             isInsideTrigger = true;
@@ -134,7 +126,7 @@ public class ItemCollecting : MonoBehaviour
 
     void OnTriggerStay(Collider other)
     {
-        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Keys") || other.CompareTag("Locker") || other.CompareTag("Bed") || other.CompareTag("Medicine"))
+        if (other.CompareTag("Banana") || other.CompareTag("Water") || other.CompareTag("Keys") || other.CompareTag("Locker") || other.CompareTag("Bed"))
         {
             ui.SetActive(true);
             isInsideTrigger = true;
